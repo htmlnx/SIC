@@ -1,0 +1,18 @@
+//sw 1
+int f0/23
+switchport mode trunk
+switchport trunk native vlan 15
+switchport nonegotiate
+no shutdown
+
+//all switch and bridge
+vlan 20 
+exit
+int vlan 20
+ip address 192.168.20 [1..5] 255.255.255.0
+
+//connect mngmt pc
+//sw a
+int f0/1
+switchport access vlan 20 
+no shutdown

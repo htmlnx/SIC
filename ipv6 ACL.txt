@@ -1,0 +1,16 @@
+ipv6 access-list BLOCK-HTTP
+deny tcp any host [ ipv6 addr ] eq www
+dny tcp any host [ ipv6 addr ] eq 443
+
+permint ipv6 any any
+int g0/1
+ipv6 traffic-filter BLOCK-HTTP in
+//use browser to access ipv6 address
+
+ipv6 access-list BLOCK-ICMP
+deny icmp any any
+permit ipv6 any any
+
+int g0/0
+ipv6 traffic-filter BLOCK-ICMP out 
+//pint fail website succ

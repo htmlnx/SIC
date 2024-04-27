@@ -1,0 +1,23 @@
+username admin1 secret admin1pa55
+
+aaa new-model
+aaa authentication login default local
+
+line console 0
+login authentication default
+
+end 
+exit
+
+// part 2 ssh
+ip domain name ccnasecurity
+crypto key generate rsa
+aaa authentication login SSH-LOGIN default
+
+line vty 0 4
+login authentication SSH-LOGIN local
+transport input ssh
+end
+
+pc>ssh -l admin1 192.168.1.1
+adminlpa55
